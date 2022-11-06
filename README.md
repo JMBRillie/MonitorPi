@@ -1,4 +1,4 @@
-# Raspi4
+# Monitor Pi
 Files from my Raspberry Pi collecting enviroment data from the BME280 sensor 
 
 Collects temperature, pressure, and humidity. 
