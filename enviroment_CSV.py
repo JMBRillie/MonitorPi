@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
 # SPDX-License-Identifier: MIT
-
+import os
 from os.path import exists
 import time
 from datetime import datetime
@@ -21,11 +21,16 @@ bme280 = adafruit_bme280.Adafruit_BME280_SPI(spi, bme_cs)
 # field names
 fields = ['Time', 'Temperature', 'Humidity', 'Pressure']
 
-textfile = "/home/pi/EnviromentShare/current_data.txt"
+shareDir = "/home/pi/EnviromentShare/"
+if not exists(shareDir):
+  os.mkdir(shareDir)
+
+textfile = shareDir + "current_data.txt"
+
 while True:
 
   # name of csv file
-  filename = "/home/pi/EnviromentShare/" + datetime.now().strftime("%y_%m_%d_") + "data.csv"
+  filename = shareDir + datetime.now().strftime("%y_%m_%d_") + "data.csv"
 
   if not exists(filename):
     # writing to csv file

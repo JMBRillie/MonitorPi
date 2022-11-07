@@ -1,5 +1,6 @@
 
 import time
+import os
 from os.path import exists
 from datetime import datetime
 import pandas as pd
@@ -7,11 +8,15 @@ import matplotlib.pyplot as plt
 
 plt.style.use('dark_background')
 
-imgname = "/home/pi/EnviromentShare/daily_data.jpg"
+shareDir = "/home/pi/EnviromentShare/"
+if not exists(shareDir):
+  os.mkdir(shareDir)
+
+imgname = shareDir + "daily_data.jpg"
 
 while True:
 
-  filename = "/home/pi/EnviromentShare/" + datetime.now().strftime("%y_%m_%d_") + "data.csv"
+  filename = shareDir + datetime.now().strftime("%y_%m_%d_") + "data.csv"
   if not exists(filename):
     print( "Sleeping")
 
