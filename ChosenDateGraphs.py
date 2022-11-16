@@ -6,19 +6,21 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 
-fileDir = "/home/pi/EnviromentShare/"
+shareDir = "/home/pi/EnviromentShare/"
+if not exists(shareDir):
+  os.mkdir(shareDir)
 
-TGraph = fileDir + "T_graph.txt"
+TGraph = shareDir + "T_graph.txt"
 titleT = "\n\t\tTemperature [deg C]\t"
 fixedDigitsT = "{:<5}"
 dpT = 2
 
-HGraph = fileDir + "H_graph.txt"
+HGraph = shareDir + "H_graph.txt"
 titleH = "\n\t\tHumidity [%]\t"
 fixedDigitsH = "{:<5}"
 dpH = 2
 
-PGraph = fileDir + "P_graph.txt"
+PGraph = shareDir + "P_graph.txt"
 titleP = "\n\t\tPressure [kPa]\t"
 fixedDigitsP = "{:<10}"
 dpP = 4
@@ -63,7 +65,7 @@ while run:
 
   timeNow = input("Date of interest (yy_mm_dd): ")
 #  timeNow = "22_09_22"
-  filename = fileDir + timeNow + "_data.csv"
+  filename = shareDir + timeNow + "_data.csv"
   if not exists(filename):
     print( "File for date not found")
 

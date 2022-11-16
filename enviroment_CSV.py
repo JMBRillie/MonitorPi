@@ -44,7 +44,7 @@ while True:
     # data rows of csv file
     data = [[datetime.now().strftime("%H:%M:%S"), round(bme280.temperature, 1), round(bme280.relative_humidity, 1), round(bme280.pressure, 1)]]
 
-    csvfile =open(filename, 'a')
+    csvfile = open(filename, 'a')
     csvwriter = csv.writer(csvfile)
     # writing the data rows
     csvwriter.writerows(data)
@@ -53,10 +53,11 @@ while True:
 
   current_time = datetime.now()
   text = ""
+  text += str(current_time) + "\n"
   text += "Time: %d:%d\n" %(current_time.hour, current_time.minute)
   text += "Temp: %0.1f C\n" % bme280.temperature
   text += "Humi: %0.1f %%\n" % bme280.relative_humidity
-  text += "Pres: %0.1f hPa" % bme280.pressure
+  text += "Pres: %0.1f hPa\n" % bme280.pressure
 
   file = open(textfile, "w")
   file.write(text)
